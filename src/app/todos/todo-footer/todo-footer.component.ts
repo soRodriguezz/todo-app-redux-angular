@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
 
 @Component({
   selector: 'app-todo-footer',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
+    this.store.select('filtro').subscribe( filtro => {
+      console.log(filtro);
+    });
   }
+
+
 
 }
